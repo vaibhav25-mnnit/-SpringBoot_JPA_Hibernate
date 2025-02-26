@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface AppDao {
 
     void save(Instructor instructor);
+
+    Instructor findInstructorById(int id);
 }

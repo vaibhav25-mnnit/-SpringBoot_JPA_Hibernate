@@ -19,9 +19,23 @@ public class JpaHibernateApplication {
 	public CommandLineRunner commandLineRunner(AppDao appDao){
 
 		return  runner -> {
-			creaateInstructor(appDao);
+//			creaateInstructor(appDao);
+
+			findInstructor(appDao);
 //			System.out.println("Hello world");
 		};
+	}
+
+	private void findInstructor(AppDao appDao) {
+		int id = 2;
+
+		Instructor found = appDao.findInstructorById(id);
+
+		System.out.println("Instructor:- "+found.toString());
+		System.out.println("the instructor details:- "+found.getInstructorDetails());
+
+
+
 	}
 
 	private void creaateInstructor(AppDao appDao) {
