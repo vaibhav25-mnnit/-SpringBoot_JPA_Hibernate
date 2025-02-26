@@ -60,4 +60,17 @@ public class InstructorDetails {
         this.youtubeChannel = youtubeChannel;
         this.hobby = hobby;
     }
+
+    @OneToOne(mappedBy = "instructorDetails", cascade = CascadeType.ALL)
+    private Instructor instructor;
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
+
 }

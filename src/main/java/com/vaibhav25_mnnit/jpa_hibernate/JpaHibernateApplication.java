@@ -20,11 +20,22 @@ public class JpaHibernateApplication {
 
 		return  runner -> {
 //			createInstructor(appDao);
-
 //			findInstructor(appDao);
+//			deleteInstructor(appDao);
 
-			deleteInstructor(appDao);
+			findInstructorDetails(appDao);
 		};
+	}
+
+	private void findInstructorDetails(AppDao appDao) {
+		int id = 2;
+		InstructorDetails instructorDetails = appDao.findInstructorDetailsById(id);
+
+		System.out.println(instructorDetails.toString());
+
+		Instructor instructor = instructorDetails.getInstructor();
+
+		System.out.println(instructor.toString());
 	}
 
 	private void deleteInstructor(AppDao appDao) {

@@ -1,6 +1,7 @@
 package com.vaibhav25_mnnit.jpa_hibernate.dao;
 
 import com.vaibhav25_mnnit.jpa_hibernate.entity.Instructor;
+import com.vaibhav25_mnnit.jpa_hibernate.entity.InstructorDetails;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,10 @@ public class AppDaoImpl  implements AppDao{
         entityManager.remove(theInstructor);
     }
 
+    @Override
+    public InstructorDetails findInstructorDetailsById(int id)
+    {
+        return entityManager.find(InstructorDetails.class,id);
+    }
 
 }
