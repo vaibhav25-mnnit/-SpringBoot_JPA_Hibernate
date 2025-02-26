@@ -47,7 +47,7 @@ public class AppDaoImpl  implements AppDao{
     @Transactional
     public void deleteInstructorDetailsById(int id) {
         InstructorDetails instructorDetails = findInstructorDetailsById(id);
-
+         instructorDetails.getInstructor().setInstructorDetails(null);
         entityManager.remove(instructorDetails);
     }
 

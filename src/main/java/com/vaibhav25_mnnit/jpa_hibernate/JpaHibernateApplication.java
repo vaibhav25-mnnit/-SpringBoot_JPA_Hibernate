@@ -30,7 +30,7 @@ public class JpaHibernateApplication {
 	}
 
 	private void deleteInstructorDetails(AppDao appDao) {
-		int id = 2;
+		int id = 3;
 		System.out.println("Deleting instructor details with id:- "+id);
 		appDao.deleteInstructorDetailsById(id);
 		System.out.println("Done");

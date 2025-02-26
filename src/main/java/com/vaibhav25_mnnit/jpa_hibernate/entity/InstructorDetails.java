@@ -61,7 +61,7 @@ public class InstructorDetails {
         this.hobby = hobby;
     }
 
-    @OneToOne(mappedBy = "instructorDetails", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "instructorDetails", cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH})
     private Instructor instructor;
 
     public Instructor getInstructor() {
