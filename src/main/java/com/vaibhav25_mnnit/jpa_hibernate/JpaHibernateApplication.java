@@ -23,12 +23,22 @@ public class JpaHibernateApplication {
 //			findInstructor(appDao);
 //			deleteInstructor(appDao);
 
-			findInstructorDetails(appDao);
+//			findInstructorDetails(appDao);
+			deleteInstructorDetails(appDao);
 		};
+
+	}
+
+	private void deleteInstructorDetails(AppDao appDao) {
+		int id = 2;
+		System.out.println("Deleting instructor details with id:- "+id);
+		appDao.deleteInstructorDetailsById(id);
+		System.out.println("Done");
 	}
 
 	private void findInstructorDetails(AppDao appDao) {
 		int id = 2;
+		System.out.println("Finding Instructor Details id:- "+id);
 		InstructorDetails instructorDetails = appDao.findInstructorDetailsById(id);
 
 		System.out.println(instructorDetails.toString());
@@ -36,6 +46,7 @@ public class JpaHibernateApplication {
 		Instructor instructor = instructorDetails.getInstructor();
 
 		System.out.println(instructor.toString());
+
 	}
 
 	private void deleteInstructor(AppDao appDao) {
