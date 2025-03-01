@@ -4,6 +4,7 @@ import com.vaibhav25_mnnit.jpa_hibernate.dao.AppDao;
 import com.vaibhav25_mnnit.jpa_hibernate.entity.Course;
 import com.vaibhav25_mnnit.jpa_hibernate.entity.Instructor;
 import com.vaibhav25_mnnit.jpa_hibernate.entity.InstructorDetails;
+import com.vaibhav25_mnnit.jpa_hibernate.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,10 +36,24 @@ public class JpaHibernateApplication {
 //			updateInstructor(appDao);
 //			updateCourse(appDao);
 
-			deleteCourse(appDao);
+//			deleteCourse(appDao);
 
+			createCourseAndReviews(appDao);
 		};
 
+	}
+
+	private void createCourseAndReviews(AppDao appDao) {
+		System.out.println("adding course with reviews");
+		Course course = new Course("How to play perfect any game.");
+
+		course.addReview(new Review("good course"));
+		course.addReview(new Review("excellent course"));
+		course.addReview(new Review("learnt very much from this"));
+
+		appDao.saveCourse(course);
+
+		System.out.println("Done");
 	}
 
 	private void deleteCourse(AppDao appDao) {
