@@ -29,13 +29,23 @@ public class JpaHibernateApplication {
 //			deleteInstructorDetails(appDao);
 
 //			createInstructorWithCourse(appDao);
-			findInstructorWithCourses(appDao);
+//			findInstructorWithCourses(appDao);
+			findInstructorWithCoursesByJoinFetch(appDao);
 		};
+	}
 
+	private void findInstructorWithCoursesByJoinFetch(AppDao appDao) {
+		System.out.println("Finding instructor with join query");
+		int id = 1;
+		Instructor instructor = appDao.findInstructorByIdJoinFetch(id);
 
+		System.out.println("Found Instructor :- "+instructor);
+		System.out.println("Courses :- "+instructor.getCourses());
+		System.out.println("Done");
 	}
 
 	private void findInstructorWithCourses(AppDao appDao) {
+		System.out.println("Finding instructor using 2 queries");
 		int id = 1;
 		Instructor instructor = appDao.findInstructorById(id);
 
