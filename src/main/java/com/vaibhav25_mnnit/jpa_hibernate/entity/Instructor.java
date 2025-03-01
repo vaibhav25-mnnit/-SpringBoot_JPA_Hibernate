@@ -3,12 +3,16 @@ package com.vaibhav25_mnnit.jpa_hibernate.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table (name = "instructor")
 public class Instructor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private  int id;
 
     @Column(name = "first_name")
@@ -23,6 +27,17 @@ public class Instructor {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetails instructorDetails;
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    @OneToMany(mappedBy = "instructor" ,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Course> courses;
 
     public  Instructor(){
 
@@ -83,5 +98,20 @@ public class Instructor {
                 ", email='" + email + '\'' +
                 ", instructorDetails=" + instructorDetails +
                 '}';
+    }
+
+
+    //method for bidirectonal addition of course in course list
+
+    public void add(Course theCourse)
+    {
+        if(this.courses == null)
+        {
+            courses = new ArrayList<>();
+        }
+
+        courses.add(theCourse);
+
+        theCourse.setInstructor(this);
     }
 }

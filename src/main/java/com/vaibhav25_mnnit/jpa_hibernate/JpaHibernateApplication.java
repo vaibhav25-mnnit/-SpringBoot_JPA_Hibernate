@@ -1,6 +1,7 @@
 package com.vaibhav25_mnnit.jpa_hibernate;
 
 import com.vaibhav25_mnnit.jpa_hibernate.dao.AppDao;
+import com.vaibhav25_mnnit.jpa_hibernate.entity.Course;
 import com.vaibhav25_mnnit.jpa_hibernate.entity.Instructor;
 import com.vaibhav25_mnnit.jpa_hibernate.entity.InstructorDetails;
 import org.springframework.boot.CommandLineRunner;
@@ -22,11 +23,35 @@ public class JpaHibernateApplication {
 //			createInstructor(appDao);
 //			findInstructor(appDao);
 //			deleteInstructor(appDao);
-
 //			findInstructorDetails(appDao);
-			deleteInstructorDetails(appDao);
+//			deleteInstructorDetails(appDao);
+
+			createInstructorWithCourse(appDao);
 		};
 
+
+	}
+
+	private void createInstructorWithCourse(AppDao appDao) {
+		System.out.println("Creating instructor with courses");
+		Instructor temp = new Instructor("sumit","bagate","sumit@gmail.com");
+
+		InstructorDetails inDetail = new InstructorDetails("http://www.youtube.com/sumit","building things");
+
+		Course theCourse1  = new Course("Learning spring boot");
+		Course theCourse2  = new Course("Learning node js");
+		Course theCourse3  = new Course("Learning React");
+
+		temp.setInstructorDetails(inDetail);
+
+		temp.add(theCourse1);
+		temp.add(theCourse2);
+		temp.add(theCourse3);
+
+
+		appDao.save(temp);
+
+		System.out.println("Done");
 	}
 
 	private void deleteInstructorDetails(AppDao appDao) {
