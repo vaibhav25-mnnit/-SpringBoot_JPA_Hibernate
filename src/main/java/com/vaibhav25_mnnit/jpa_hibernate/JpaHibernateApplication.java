@@ -24,7 +24,7 @@ public class JpaHibernateApplication {
 		return  runner -> {
 //			createInstructor(appDao);
 //			findInstructor(appDao);
-			deleteInstructor(appDao);
+//			deleteInstructor(appDao);
 //			findInstructorDetails(appDao);
 //			deleteInstructorDetails(appDao);
 
@@ -34,8 +34,18 @@ public class JpaHibernateApplication {
 
 //			updateInstructor(appDao);
 //			updateCourse(appDao);
+
+			deleteCourse(appDao);
+
 		};
 
+	}
+
+	private void deleteCourse(AppDao appDao) {
+		int id = 10;
+		System.out.println("Deleting course with id "+id);
+		appDao.deleteCourseById(id);
+		System.out.println("Done");
 	}
 
 

@@ -31,4 +31,5 @@ public interface AppDao {
 
     void  updateCourse(Course course);
 
+    void  deleteCourseById(int id);
 }
