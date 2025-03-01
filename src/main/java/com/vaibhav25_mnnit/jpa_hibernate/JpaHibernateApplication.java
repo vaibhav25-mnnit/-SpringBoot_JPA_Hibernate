@@ -43,7 +43,9 @@ public class JpaHibernateApplication {
 
 		List<Course> courses = appDao.findCoursesByInstructorId(instructor.getId());
 
-		System.out.println("Courses:- "+courses);
+		instructor.setCourses(courses);
+
+		System.out.println("Courses:- "+instructor.getCourses());
 
 		System.out.println("Done");
 	}
