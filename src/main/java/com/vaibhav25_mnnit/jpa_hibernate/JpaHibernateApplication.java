@@ -36,14 +36,22 @@ public class JpaHibernateApplication {
 //			updateInstructor(appDao);
 //			updateCourse(appDao);
 
-//			deleteCourse(appDao);
+			deleteCourse(appDao);
 
 //			createCourseAndReviews(appDao);
 
-			retriveCourseAndReviews(appDao);
+//			retriveCourseAndReviews(appDao);
+
+//			deleteCourseAndReviews(appDao);
+			
 		};
+		
+		
 
 
+	}
+
+	private void deleteCourseAndReviews(AppDao appDao) {
 	}
 
 	private void retriveCourseAndReviews(AppDao appDao) {
