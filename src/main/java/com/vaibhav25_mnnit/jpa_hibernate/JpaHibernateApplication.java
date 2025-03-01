@@ -30,8 +30,38 @@ public class JpaHibernateApplication {
 
 //			createInstructorWithCourse(appDao);
 //			findInstructorWithCourses(appDao);
-			findInstructorWithCoursesByJoinFetch(appDao);
+//			findInstructorWithCoursesByJoinFetch(appDao);
+
+			updateInstructor(appDao);
+			updateCourse(appDao);
 		};
+
+	}
+
+
+	private void updateCourse(AppDao appDao) {
+		System.out.println("Updating Course");
+		int id = 10;
+		Course course = appDao.findCourseById(id);
+
+		course.setTitle("Learning Advanced hibernate mappings in spring boot");
+
+		appDao.updateCourse(course);
+
+		System.out.println("Done");
+	}
+
+	private void updateInstructor(AppDao appDao) {
+		System.out.println("Updating Instructor");
+		int id = 1;
+		Instructor instructor = appDao.findInstructorById(id);
+
+		instructor.setFirstName("Ganu");
+		instructor.setLastName("Sumit");
+		instructor.setEmail("ganusumit@mail.com");
+		appDao.updateInstructor(instructor);
+
+		System.out.println("Done");
 	}
 
 	private void findInstructorWithCoursesByJoinFetch(AppDao appDao) {
