@@ -24,7 +24,7 @@ public class JpaHibernateApplication {
 		return  runner -> {
 //			createInstructor(appDao);
 //			findInstructor(appDao);
-//			deleteInstructor(appDao);
+			deleteInstructor(appDao);
 //			findInstructorDetails(appDao);
 //			deleteInstructorDetails(appDao);
 
@@ -32,8 +32,8 @@ public class JpaHibernateApplication {
 //			findInstructorWithCourses(appDao);
 //			findInstructorWithCoursesByJoinFetch(appDao);
 
-			updateInstructor(appDao);
-			updateCourse(appDao);
+//			updateInstructor(appDao);
+//			updateCourse(appDao);
 		};
 
 	}
