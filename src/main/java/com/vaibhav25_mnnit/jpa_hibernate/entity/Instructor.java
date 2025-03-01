@@ -36,7 +36,8 @@ public class Instructor {
         this.courses = courses;
     }
 
-    @OneToMany(mappedBy = "instructor" ,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    //bydefault fetch type for one-to-many is lazy
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "instructor" ,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private List<Course> courses;
 
     public  Instructor(){

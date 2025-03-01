@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class JpaHibernateApplication {
 
@@ -26,10 +28,24 @@ public class JpaHibernateApplication {
 //			findInstructorDetails(appDao);
 //			deleteInstructorDetails(appDao);
 
-			createInstructorWithCourse(appDao);
+//			createInstructorWithCourse(appDao);
+			findInstructorWithCourses(appDao);
 		};
 
 
+	}
+
+	private void findInstructorWithCourses(AppDao appDao) {
+		int id = 1;
+		Instructor instructor = appDao.findInstructorById(id);
+
+		System.out.println("FoundInstructor:- "+instructor);
+
+		List<Course> courses = appDao.findCoursesByInstructorId(instructor.getId());
+
+		System.out.println("Courses:- "+courses);
+
+		System.out.println("Done");
 	}
 
 	private void createInstructorWithCourse(AppDao appDao) {
