@@ -3,6 +3,7 @@ package com.vaibhav25_mnnit.jpa_hibernate.dao;
 import com.vaibhav25_mnnit.jpa_hibernate.entity.Course;
 import com.vaibhav25_mnnit.jpa_hibernate.entity.Instructor;
 import com.vaibhav25_mnnit.jpa_hibernate.entity.InstructorDetails;
+import com.vaibhav25_mnnit.jpa_hibernate.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
@@ -138,6 +139,18 @@ public class AppDaoImpl  implements AppDao{
                 "select c from Course c "
                         + "join fetch c.students "
                         +"where c.id = :data",Course.class
+        );
+
+        query.setParameter("data",id);
+        return query.getSingleResult();
+    }
+
+    @Override
+    public Student findStudentAndCoursesByStudentId(int id) {
+        TypedQuery<Student> query = entityManager.createQuery(
+                "select s from Student s "
+                        + "join fetch s.courses "
+                        +"where s.id = :data",Student.class
         );
 
         query.setParameter("data",id);
