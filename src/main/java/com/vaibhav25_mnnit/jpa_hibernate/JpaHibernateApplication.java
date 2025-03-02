@@ -44,10 +44,21 @@ public class JpaHibernateApplication {
 //			createCourseAndStudents(appDao);
 //			retriveCourseAndStudents(appDao);
 //			retriveStudentsAndCourses(appDao);
-			addCoursesForStudent(appDao);
+//			addCoursesForStudent(appDao);
+			deleteStudent(appDao);
+
 		};
 	}
 
+	private void deleteStudent(AppDao appDao)  {
+
+		int theId = 1;
+		System.out.println("Deleting student id: " + theId);
+
+		appDao.deleteStudent(theId);
+
+		System.out.println("Done!");
+	}
 	private void addCoursesForStudent(AppDao appDao) {
 		int id = 2;
 		System.out.println("Adding new courses to student with id:- "+id);
