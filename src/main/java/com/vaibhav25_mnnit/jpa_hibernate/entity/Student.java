@@ -85,6 +85,7 @@ public class Student {
         if(courses == null) courses = new ArrayList<>();
 
         courses.add(course);
+        course.addStudent(this);
     }
     @Override
     public String toString() {

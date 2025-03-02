@@ -43,17 +43,33 @@ public class JpaHibernateApplication {
 
 //			createCourseAndStudents(appDao);
 //			retriveCourseAndStudents(appDao);
-			retriveStudentsAndCourses(appDao);
+//			retriveStudentsAndCourses(appDao);
+			addCoursesForStudent(appDao);
 		};
+	}
 
-		
-		
+	private void addCoursesForStudent(AppDao appDao) {
+		int id = 2;
+		System.out.println("Adding new courses to student with id:- "+id);
 
+		Student student = appDao.findStudentAndCoursesByStudentId(id);
 
+		Course course = new Course("Learning node js asdf ");
+		Course course1 = new Course("learn springboot f");
+
+		student.addCourse(course);
+		student.addCourse(course1);
+
+		System.out.println("Updating student:- "+student);
+		System.out.println("Courses:- "+student.getCourses());
+
+		appDao.updateStudent(student);
+
+		System.out.println("Done");
 	}
 
 	private void retriveStudentsAndCourses(AppDao appDao) {
-		int id = 1;
+		int id = 2;
 		System.out.println("Finding Students and Courses with id:- "+id);
 
 		Student student = appDao.findStudentAndCoursesByStudentId(id);
