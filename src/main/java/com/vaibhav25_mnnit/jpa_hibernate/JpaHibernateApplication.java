@@ -1,10 +1,7 @@
 package com.vaibhav25_mnnit.jpa_hibernate;
 
 import com.vaibhav25_mnnit.jpa_hibernate.dao.AppDao;
-import com.vaibhav25_mnnit.jpa_hibernate.entity.Course;
-import com.vaibhav25_mnnit.jpa_hibernate.entity.Instructor;
-import com.vaibhav25_mnnit.jpa_hibernate.entity.InstructorDetails;
-import com.vaibhav25_mnnit.jpa_hibernate.entity.Review;
+import com.vaibhav25_mnnit.jpa_hibernate.entity.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,19 +33,37 @@ public class JpaHibernateApplication {
 //			updateInstructor(appDao);
 //			updateCourse(appDao);
 
-			deleteCourse(appDao);
+//			deleteCourse(appDao);
 
 //			createCourseAndReviews(appDao);
 
 //			retriveCourseAndReviews(appDao);
 
 //			deleteCourseAndReviews(appDao);
-			
+
+			createCourseAndStudents(appDao);
 		};
 		
 		
 
 
+	}
+
+	private void createCourseAndStudents(AppDao appDao) {
+		System.out.println("Creating course with students");
+		// create
+		Course newCourse = new Course("learning to many to many relationship");
+
+		Student newStudent = new Student("vaibhav","bagate","vb@mail.com");
+		Student newStudent2 = new Student("sumit","bagate","sb@mail.com");
+
+		newCourse.addStudent(newStudent);
+		newCourse.addStudent(newStudent2);
+
+
+		appDao.saveCourse(newCourse);
+
+		System.out.println("Done");
 	}
 
 	private void deleteCourseAndReviews(AppDao appDao) {
